@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Test page</h1>
+
+  <button id="closeSocket"> Disconnect</button>
+  <button id="openSocket">Restore connection</button>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+
+    // Based on socket.io
+    // Establish a connection and point to window.location by default
+    let socket = io('http://127.0.0.1:6788')
+
+    openSocket.onclick = () => {
+      socket.open()  // You can also reconnect by opening the socket manually
+    }
+    closeSocket.onclick = () => {
+      socket.close() //Manually close the client-to-server link
+    }
+
+    socket.on('connect', () => { //connection succeeded
+      // Socket.id is a unique identifier, which is set after the client connects to the server.
+      console.log(socket.id)
+    })
+
+    socket.on('connect_error', (error) => {
+      console.log('error in connecting')
+    })
+    socket.on('disconnect', (timeout) => {
+      console.log('Disconnect')
+    })
+    socket.on('reconnect', (timeout) => {
+      console.log('Successfully reconnected')
+    })
+    socket.on('reconnecting', (timeout) => {
+      console.log('Start to reconnect')
+    })
+    socket.on('reconnect_error', (timeout) => {
+      console.log('Reconnect error')
+    })
+
+    // Monitor server return event
+    socket.on('serverEve', (data) => {
+      console.log('serverEve', data)
+    })
+
+    let num = 0
+    setInterval(() => {
+      // Send events to the server
+      socket.emit('feEve', ++num)
+    }, 1000)
+
+
+
+
+// Based on ws
+    /*
+    let num = 0
+    let ws = new WebSocket('ws://127.0.0.1:6788')
+    ws.onopen = (evt) => {
+      console.log('connection succeeded')
+      setInterval(() => {
+        ws.send(++ num)  // Send data to the server
+      }, 1000)
+    }
+    ws.onmessage = (evt) => {
+      console.log('Receive server data', evt.data)
+    }
+    ws.onclose = (evt) => {
+      console.log('shut down')
+    }
+    ws.onerror = (evt) => {
+      console.log('error')
+    }
+    closeSocket.onclick = () => {
+      ws.close()  // Disconnect
+    }
+    */
+  </script>
+</body>
+
+</html>

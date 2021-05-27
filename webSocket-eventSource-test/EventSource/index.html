@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Test page</h1>
+  <script>
+
+    // The instantiated EventSource parameter is the route monitored by the server
+    var source = new EventSource('/EventSource-test')
+    source.onopen = function (event) { // Callback for successful connection with the server
+      console.log('Successfully connected to the server')
+    }
+    // Listen to all messages sent from the server without a specified event type (messages without event field)
+    source.onmessage = function (event) { //Listen for unnamed events
+      console.log('Unnamed event', event.data)
+    }
+    source.onerror = function (error) { // Monitor error
+      console.log('error')
+    }
+    // Monitor the specified type of event (multiple can be monitored)
+    source.addEventListener("myEve", function (event) {
+      console.log("myEve", event.data)
+    })
+
+  </script>
+</body>
+
+</html>
