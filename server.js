@@ -13,6 +13,7 @@ emoticon = emoticon.filter((item, index) => {
   const TYPE = { gif: true, jpg: true, png: true, jpeg: true }
   return TYPE[item.split('.')[1]] 
 })
+
 emoticon = emoticon.filter((item, index) => index < 20)
 // Build static service
 app.get('*', (req, res) => {
@@ -44,6 +45,8 @@ io.on('connection', (socket) => {
     socket.emit('userList', userList)
     socket.broadcast.emit('login', userInfo)
   })
+
+
   // Exit (built-in event)
   socket.on('disconnect', reason => {
     userList = userList.filter(item => item.id != socket.id)
@@ -71,6 +74,11 @@ io.on('connection', (socket) => {
     // General news
     io.sockets.emit('sendMessageGroup', message)
   })
+  
+
+  // socket.on('typing', function(user) {
+  //   socket.broadcast.emit('typing', user);
+  // })
 
   // Receive private chat messages
   socket.on('sendMessageMember', message => {
@@ -98,7 +106,7 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(8686, () => {
+server.listen(process.env.PORT || 8686, () => {
   console.log(`server runing on port 8686 ...`)
   console.log(`http://127.0.0.1:8686/YouChat`)
 })

@@ -31,6 +31,7 @@ export default {
         </div>
       `
       control.bindEventUserList($('.user-list .item', 'all'))
+
     } else if (TYPE == 'Array'){
       // Log in for the first time to return to all users list
       const HTML = user.filter(me => me.id != info.id).map(item => `
@@ -54,6 +55,7 @@ export default {
     }
   },
   drawMessageList(list){
+    console.log(list);
     $('.message-wrap .list').innerHTML = ''
     if (!list){ return} 
     const HTML = list.map(item => `

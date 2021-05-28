@@ -18,14 +18,20 @@ export default function(){
   window.socket.on('login', userInfo => {
     view.drawUserList(userInfo)
   })
+
+
   // Get the current online list
   window.socket.on('userList', userList => {
     view.drawUserList(userList)
   })
+
+
   // drop out
   window.socket.on('quit', id => {
     view.drawUserList(id)
   })
+
+
   // Receive group chat messages
   window.socket.on('sendMessageGroup', message => {
     info.groupMessageList.push(message)
@@ -44,6 +50,7 @@ export default function(){
       })
     }
   })
+
   // Receive private chat messages
   window.socket.on('sendMessageMember', message => {
     if (message.id == info.id){ // own message return
@@ -75,9 +82,12 @@ export default function(){
         })
       }
     }
+
     // userList message summary
     if ($(`.item[data-id="${message.id}"]`)){
       $(`.item[data-id="${message.id}"] .item-text`).innerHTML = message.text || `[Receive a new soul]`
     }
   })
+
 }
+
