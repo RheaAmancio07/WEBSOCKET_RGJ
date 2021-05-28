@@ -106,8 +106,9 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(process.env.PORT || 5000, () => {
-  console.log(`server runing on port 5000 ...`)
+const port=process.env.PORT || 5000;
+server.listen(port, () => {
+  console.log(`server runing on port ${port} ...`)
   console.log(`http://127.0.0.1:5000/YouChat`)
 })
 
