@@ -106,9 +106,9 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(process.env.PORT || 8686, () => {
-  console.log(`server runing on port 8686 ...`)
-  console.log(`http://127.0.0.1:8686/YouChat`)
+server.listen(process.env.PORT || 5000, () => {
+  console.log(`server runing on port 5000 ...`)
+  console.log(`http://127.0.0.1:5000/YouChat`)
 })
 
 
