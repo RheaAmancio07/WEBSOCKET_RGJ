@@ -4,7 +4,7 @@ const app = require('express')()
 const server = require('http').Server(app)
 const io = require('socket.io')(server, {})
 
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5001;
 
 // Read emoticons and avatars and send them to the front end
 let portrait = fs.readdirSync('./file/portrait')
