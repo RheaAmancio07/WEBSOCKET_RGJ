@@ -4,6 +4,8 @@ const app = require('express')()
 const server = require('http').Server(app)
 const io = require('socket.io')(server, {})
 
+const port = process.env.PORT || 3000;
+
 // Read emoticons and avatars and send them to the front end
 let portrait = fs.readdirSync('./file/portrait')
 portrait = portrait.map(item => `/file/portrait/${item}`)
@@ -106,11 +108,10 @@ io.on('connection', (socket) => {
   })
 })
 
-const port = process.env.PORT || 5000;
 
 server.listen(port, () => {
   console.log(`server runing on port ${port} ...`)
-  console.log(`http://127.0.0.1:5000/YouChat`)
+  console.log(`http://127.0.0.1:3000/YouChat`)
 })
 
 
