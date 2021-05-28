@@ -41,6 +41,7 @@ button {
 }
 
 #login-wrap .title {
+  text-align: center;
   font-size: 20px;
   font-weight: 600;
   color: #333;
@@ -54,8 +55,8 @@ button {
   outline: none;
 }
 
-#login-wrap .contenteditable:after {
-  content: "\8BF7\95EE\600E\4E48\79F0\547C\FF1F";
+#login-wrap .Nickname:after {
+  content: "Enter your Nickname";
   color: #9ea0a1;
 }
 
@@ -97,7 +98,7 @@ button {
 }
 
 #login-wrap .chat-btn {
-  background: #2bb8aa;
+  background: #23dce9;
   height: 42px;
   line-height: 42px;
   text-align: center;
@@ -108,6 +109,7 @@ button {
   border-radius: 2px;
   border: 0;
   outline: none;
+  color: black;
 }
 
 #login-wrap .chat-btn:hover {
@@ -243,13 +245,14 @@ button {
 }
 
 .message-wrap .top .btn[data-now=true] {
-  border: 1px solid #2bb8aa;
-  background: #2bb8aa;
+  border: 1px solid #12e4cf;
+  background: #12e4cf;
   color: #fff;
 }
 
 .message-wrap .top .group {
   cursor: pointer;
+  font-size: 20px;
   padding-left: 10px;
   border-radius: 20px 0 0 20px;
   margin-right: 1px;
@@ -272,6 +275,7 @@ button {
 }
 
 .message-wrap .top .member {
+  font-size: 20px;
   cursor: pointer;
   padding-right: 10px;
   border-radius: 0 20px 20px 0;
@@ -475,9 +479,9 @@ button {
 .message-wrap .edit .btn .send-message {
   width: 90px;
   height: 30px;
-  background: #ffffff;
-  border: 1px solid #c1c1c1;
-  color: #222222;
+  font-size: 20px;
+  background: #12e4cf;
+  border: 1px solid #12e4cf;
   outline: none;
   border-radius: 5px;
   line-height: 30px;

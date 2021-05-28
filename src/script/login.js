@@ -10,9 +10,9 @@ tool.ajax('GET', '/loadImg', null, (res) => {
 const oUserName = $('.user-name') 
 oUserName.oninput = e => {
   if (oUserName.innerHTML != ''){
-    oUserName.classList.remove('contenteditable')
+    oUserName.classList.remove('Nickname')
   }else{
-    oUserName.classList.add('contenteditable')
+    oUserName.classList.add('Nickname')
   }
 }
 
